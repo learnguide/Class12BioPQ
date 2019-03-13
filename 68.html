@@ -1,0 +1,286 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+</head>
+
+<body style="margin: 0;">
+
+<div id="p68" style="overflow: hidden; position: relative; background-color: white; width: 909px; height: 1286px;">
+<script type=text/javascript>
+    function toggleAnnotation(id){
+       var annotation = document.getElementById(id).style;
+       annotation.visibility = annotation.visibility === 'hidden' ? 'visible' : 'hidden';
+    }
+    var lastDragged;
+    function Draggable(element){
+        this.element=element;
+        this.offsets={};
+        this.mousePos={};
+        this.isMoving=false;
+        this.newPos={};
+        this.html=document.getElementsByTagName("html").item(0);
+        this.isTouch='ontouchstart' in window;
+        var self=this;
+        this.element.onmousemove=null;
+        if(this.html.addEventListener){
+            if(this.isTouch){
+                this.element.addEventListener("touchstart", moveStart);
+                this.html.addEventListener("touchmove", movePopup);
+                this.html.addEventListener("touchend", releaseAnnot);
+                try{moveStart(event);}catch(ex){}
+            }else{
+                this.element.addEventListener("mousedown", moveStart);
+                this.html.addEventListener("mousemove", movePopup);
+                this.html.addEventListener("mouseup", releaseAnnot);
+            }
+        }else if(this.html.attachEvent){
+            this.html.attachEvent("onmousedown", moveStart);
+            this.html.attachEvent("onmousemove", movePopup);
+            this.html.attachEvent("onmouseup", releaseAnnot);
+        }
+
+        function moveStart(event){
+            event = event || window.event;
+            self.isMoving = true;
+            self.mousePos.x=event.clientX || event.touches[0].pageX;
+            self.mousePos.y=event.clientY || event.touches[0].pageY;
+            self.offsets.left=self.element.parentNode.offsetLeft;
+            self.offsets.top=self.element.parentNode.offsetTop;
+            self.newPos.left=self.offsets.left;
+            self.newPos.top=self.offsets.top;
+            self.element.parentNode.style.zIndex=5;
+            if(lastDragged)
+                lastDragged.style.zIndex=4;
+        }
+
+        function releaseAnnot(event){
+            self.isMoving=false;
+            lastDragged=self.element.parentNode;
+        }
+
+        function movePopup(event){
+            if(self.isMoving === false)
+                return;
+            (event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+            event = event || window.event;            
+            self.newPos.left=(event.clientX || event.touches[0].pageX) - self.mousePos.x + self.offsets.left;
+            self.newPos.top =(event.clientY || event.touches[0].pageY) - self.mousePos.y + self.offsets.top;
+            self.element.parentNode.style.top = self.newPos.top+"px";
+            self.element.parentNode.style.left = self.newPos.left+"px";
+        }
+
+        element.onclick =function(event){
+            if(self.offsets.left === self.newPos.left && self.newPos.top === self.offsets.top){
+                toggleAnnotation(self.element.parentNode.id);
+                self.isMoving=false;
+            }
+        }
+    }
+</script>
+
+
+
+<!-- Begin shared CSS values -->
+<style class="shared-css" type="text/css" >
+.t {
+	-webkit-transform-origin: bottom left;
+	-ms-transform-origin: bottom left;
+	transform-origin: bottom left;
+	-webkit-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	transform: scale(0.25);
+	z-index: 2;
+	position: absolute;
+	white-space: pre;
+	overflow: visible;
+}
+.t::-moz-selection {
+	color: transparent;
+	background: rgba(0, 106, 173, 0.4);
+}
+.t::selection {
+	color: transparent;
+	background: rgba(0, 106, 173, 0.4);
+}
+</style>
+<!-- End shared CSS values -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_68{left:163px;bottom:172px;}
+#t2_68{left:355px;bottom:1128px;letter-spacing:0.3px;word-spacing:0.4px;}
+#t3_68{left:356px;bottom:1096px;letter-spacing:0.3px;word-spacing:0.2px;}
+#t4_68{left:410px;bottom:1064px;letter-spacing:0.3px;word-spacing:0.3px;}
+#t5_68{left:273px;bottom:1032px;letter-spacing:0.3px;word-spacing:0.4px;}
+#t6_68{left:382px;bottom:963px;letter-spacing:0.3px;word-spacing:0.3px;}
+#t7_68{left:47px;bottom:911px;letter-spacing:0.3px;word-spacing:0.4px;}
+#t8_68{left:47px;bottom:861px;letter-spacing:0.2px;}
+#t9_68{left:114px;bottom:861px;letter-spacing:0.3px;word-spacing:0.4px;}
+#ta_68{left:47px;bottom:810px;letter-spacing:0.2px;}
+#tb_68{left:80px;bottom:810px;letter-spacing:0.3px;word-spacing:0.4px;}
+#tc_68{left:47px;bottom:740px;letter-spacing:0.3px;word-spacing:0.3px;}
+#td_68{left:47px;bottom:708px;letter-spacing:0.3px;word-spacing:0.4px;}
+#te_68{left:47px;bottom:657px;letter-spacing:0.3px;}
+#tf_68{left:93px;bottom:657px;letter-spacing:0.3px;word-spacing:0.5px;}
+#tg_68{left:47px;bottom:587px;letter-spacing:0.3px;word-spacing:0.4px;}
+#th_68{left:47px;bottom:555px;letter-spacing:0.4px;}
+#ti_68{left:47px;bottom:505px;letter-spacing:0.3px;}
+#tj_68{left:93px;bottom:505px;letter-spacing:0.3px;word-spacing:0.4px;}
+#tk_68{left:47px;bottom:434px;letter-spacing:0.3px;word-spacing:0.3px;}
+#tl_68{left:47px;bottom:384px;letter-spacing:0.3px;word-spacing:0.4px;}
+#tm_68{left:47px;bottom:334px;letter-spacing:0.3px;word-spacing:0.3px;}
+#tn_68{left:47px;bottom:283px;letter-spacing:0.2px;}
+#to_68{left:114px;bottom:283px;letter-spacing:0.3px;word-spacing:0.3px;}
+#tp_68{left:314px;bottom:283px;letter-spacing:0.2px;}
+#tq_68{left:347px;bottom:283px;letter-spacing:0.3px;word-spacing:0.2px;}
+#tr_68{left:47px;bottom:213px;letter-spacing:0.3px;word-spacing:0.3px;}
+#ts_68{left:47px;bottom:181px;letter-spacing:0.3px;word-spacing:0.3px;}
+#tt_68{left:47px;bottom:130px;letter-spacing:0.3px;}
+#tu_68{left:93px;bottom:130px;letter-spacing:0.3px;word-spacing:0.3px;}
+#tv_68{left:792px;bottom:8px;}
+#tw_68{left:227px;bottom:-1px;}
+
+.s1_68{
+	FONT-SIZE: 562.2px;
+	FONT-FAMILY: Helvetica, Arial, sans-serif;
+	color: rgba(255, 255, 255, 0);
+}
+
+.s2_68{
+	FONT-SIZE: 73.3px;
+	FONT-FAMILY: DroidSerif-Bold_ls;
+	color: rgba(255, 255, 255, 0);
+}
+
+.s3_68{
+	FONT-SIZE: 73.3px;
+	FONT-FAMILY: DroidSerif_lx;
+	color: rgba(255, 255, 255, 0);
+}
+
+.s4_68{
+	FONT-SIZE: 48.9px;
+	FONT-FAMILY: Arial_m2;
+	color: rgba(255, 255, 255, 0);
+}
+
+.s5_68{
+	FONT-SIZE: 289.5px;
+	FONT-FAMILY: Helvetica, Arial, sans-serif;
+	color: rgba(255, 255, 255, 0);
+}
+
+.t.m0_68{
+	-webkit-transform: matrix(0.71,-0.71,0.71,0.71,0, 0) scale(0.25);
+	-ms-transform: matrix(0.71,-0.71,0.71,0.71,0, 0) scale(0.25);
+	transform: matrix(0.71,-0.71,0.71,0.71,0, 0) scale(0.25);
+}
+
+#form1_68{	z-index: 2;	border-style: none;	padding: 0px;	position: absolute;	left: 741px;	top: 77px;	width: 3px;	height: 3px;	text-align: left;	background: transparent;	background-image: url("68/form/816 0 ROff.png");	background-repeat: no-repeat;	font: normal 1px Arial, Helvetica, sans-serif;}
+#popup_816_0_R{top: 51px;left: 792.15px;}
+.annotPopup{position: absolute;background-color:#FFFF99;border: 2px solid black;font-family:sans-serif;font-size:14px;z-index:2;width:200px;}
+.annotDragbar{overflow:auto; border-bottom:1px solid black; background-color:#aaa659; height:20px; cursor:move;}
+.annotHeader{border-bottom:1px solid black;}
+#popup_819_0_R{top: 801px;left: 618.36px;}
+#form2_68{	z-index: 2;	border-style: none;	padding: 0px;	position: absolute;	left: 23px;	top: 342px;	width: 879px;	height: 882px;	text-align: left;	background: transparent;	background-image: url("68/form/819 0 ROff.png");	background-repeat: no-repeat;	font: normal 704px Arial, Helvetica, sans-serif;}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style id="fonts68" type="text/css" >
+
+@font-face {
+	font-family: Arial_m2;
+	src: url("fonts/Arial_m2.woff") format("woff");
+}
+
+@font-face {
+	font-family: DroidSerif-Bold_ls;
+	src: url("fonts/DroidSerif-Bold_ls.woff") format("woff");
+}
+
+@font-face {
+	font-family: DroidSerif_lx;
+	src: url("fonts/DroidSerif_lx.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin page background -->
+<div id="pg68Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg68" style="-webkit-user-select: none;"><object width="909" height="1286" data="68/68.svg" type="image/svg+xml" id="pdf68" style="width:909px; height:1286px; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_68" class="t m0_68 s1_68">Onlinexampoint</div>
+<div id="t2_68" class="t s2_68">CBSE Class 12 Biology</div>
+<div id="t3_68" class="t s2_68">Important Questions</div>
+<div id="t4_68" class="t s2_68">Chapter 5</div>
+<div id="t5_68" class="t s2_68">Principles of Inheritance and Variation</div>
+<div id="t6_68" class="t s2_68">1 Marks Questions</div>
+<div id="t7_68" class="t s2_68">1. Give any two reasons for the selection of pea plants by Mendel for his experiments.</div>
+<div id="t8_68" class="t s2_68">Ans.(i)</div>
+<div id="t9_68" class="t s3_68">Many varieties with contrasting forms of characters</div>
+<div id="ta_68" class="t s2_68">(ii)</div>
+<div id="tb_68" class="t s3_68">Can easily be cross pollinated as well as self pollinated.</div>
+<div id="tc_68" class="t s2_68">2. Name any one plant that shows the phenomenon of incomplete dominance during the</div>
+<div id="td_68" class="t s2_68">inheritance of its flower colour.</div>
+<div id="te_68" class="t s2_68">Ans.</div>
+<div id="tf_68" class="t s3_68">Dog flower (Snapdragon or Antirrhinum sp.)</div>
+<div id="tg_68" class="t s2_68">3. Name the base change and the amino acid change, responsible for sickle cell</div>
+<div id="th_68" class="t s2_68">anaemia.</div>
+<div id="ti_68" class="t s2_68">Ans.</div>
+<div id="tj_68" class="t s3_68">GAG changes as GUG, Glutamic acid is substituted by valine.</div>
+<div id="tk_68" class="t s2_68">4. Name the disorder with the following chromosome complement.</div>
+<div id="tl_68" class="t s2_68">(i) 22 pairs of autosomes + X X Y</div>
+<div id="tm_68" class="t s2_68">(ii) 22 pairs of autosomes + 21st chromosome + XY.</div>
+<div id="tn_68" class="t s2_68">Ans.(i)</div>
+<div id="to_68" class="t s3_68">Klinefelters Syndrome</div>
+<div id="tp_68" class="t s2_68">(ii)</div>
+<div id="tq_68" class="t s3_68">Downs syndrome</div>
+<div id="tr_68" class="t s2_68">5. A haemophilic man marries a normal homozygous woman. What is the probability</div>
+<div id="ts_68" class="t s2_68">that their daughter will be haemophilic?</div>
+<div id="tt_68" class="t s2_68">Ans.</div>
+<div id="tu_68" class="t s3_68">Their daughter can never be haemophilic. (0%).</div>
+<div id="tv_68" class="t s4_68">1</div>
+<div id="tw_68" class="t s5_68">LearnGuide.in</div>
+
+<!-- End text definitions -->
+
+
+<!-- Begin Form Data -->
+<form>
+<input id="form1_68" type="button" tabindex="21" data-objref="816 0 R" title="Admin
+" onclick="toggleAnnotation('popup_816_0_R');"/>
+<div style='visibility:hidden;' id="popup_816_0_R" class='annotPopup'>
+  <div class="annotDragbar" onmousemove="new Draggable(this);" ontouchstart="new Draggable(this);" title="Press to minimise"></div>    <div class='annotHeader'>
+        Admin<br/>
+        Rectangle<br/>
+        22/02/2018 14:13:01 GMT<br/>
+    </div>
+    <div class='annotContent'></div>
+</div>
+<div style='visibility:hidden;' id="popup_819_0_R" class='annotPopup'>
+  <div class="annotDragbar" onmousemove="new Draggable(this);" ontouchstart="new Draggable(this);" title="Press to minimise"></div>    <div class='annotHeader'>
+        Admin<br/>
+        Rectangle<br/>
+        22/02/2018 14:15:31 GMT<br/>
+    </div>
+    <div class='annotContent'></div>
+</div>
+<input id="form2_68" type="button" tabindex="23" data-objref="819 0 R" title="Admin
+" onclick="toggleAnnotation('popup_819_0_R');"/>
+
+</form>
+<!-- End Form Data -->
+
+</div>
+</body>
+</html>
